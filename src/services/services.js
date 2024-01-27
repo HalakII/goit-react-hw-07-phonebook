@@ -5,37 +5,16 @@ const instance = axios.create({
 });
 
 export const fetchAllContacts = async () => {
-  try {
-    const response = await instance.get('/contacts');
-    const { data } = response;
-    console.log({ data });
-    return data;
-  } catch (error) {
-    console.error('Error fetching contacts:', error);
-    throw error;
-  }
+  const response = await instance.get('/contacts');
+  return response;
 };
 
 export const addContactData = async ({ name, number }) => {
-  try {
-    const response = await instance.post('/contacts', { name, number });
-    const { data } = response;
-    console.log('Contact added:', data);
-    return data;
-  } catch (error) {
-    console.error('Error adding contact:', error);
-    throw error;
-  }
+  const response = await instance.post('/contacts', { name, number });
+  return response;
 };
 
 export const deleteContactData = async ({ contactId }) => {
-  try {
-    const response = await instance.delete(`/contacts/${contactId}`);
-    const { data } = response;
-    console.log('Contact deleted:', data);
-    return data;
-  } catch (error) {
-    console.error('Error deleting contact:', error);
-    throw error;
-  }
+  const response = await instance.delete(`/contacts/${contactId}`);
+  return response;
 };
